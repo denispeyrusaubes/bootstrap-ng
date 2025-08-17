@@ -28,4 +28,8 @@ export class SommaireComponent {
         "Applications Angular, tableaux de bord interactifs, sites vitrines performants — conçus avec de bonnes pratiques et une architecture claire.",
     },
   ];
+
+onClick() {
+  alert('Bouton cliqué !');
+}
 }
