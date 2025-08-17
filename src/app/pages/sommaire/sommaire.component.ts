@@ -1,17 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';   
 
 type Section = { titre: string; description: string };
 
 @Component({
   selector: 'app-sommaire',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, RouterLink],                  
   templateUrl: './sommaire.component.html',
-  styleUrl: './sommaire.component.css'
+  styleUrls: ['./sommaire.component.css']
 })
 export class SommaireComponent {
+  constructor(private router: Router) {} 
 
-  public sections: Section[] = [       
+  public sections: Section[] = [
     {
       titre: 'Accueil',
       description:
@@ -29,7 +32,6 @@ export class SommaireComponent {
     },
   ];
 
-onClick() {
-  alert('Bouton cliqué !');
-}
+ 
+  
 }
