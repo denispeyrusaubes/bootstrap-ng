@@ -7,7 +7,7 @@ type Section = { titre: string; description: string };
 @Component({
   selector: 'app-sommaire',
   standalone: true,
-  imports: [CommonModule, RouterLink],                  
+  imports: [CommonModule],                  
   templateUrl: './sommaire.component.html',
   styleUrls: ['./sommaire.component.css']
 })

@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-apropos',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, RouterLink],    
   templateUrl: './apropos.component.html',
-  styleUrl: './apropos.component.css'
+  styleUrls: ['./apropos.component.css']
 })
-export class AproposComponent {
-
-}
+export class AproposComponent {}
