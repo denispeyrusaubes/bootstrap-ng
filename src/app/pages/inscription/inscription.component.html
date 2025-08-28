@@ -1,6 +1,14 @@
 
-
-
-<input type="string"     [(ngModel)]="prenom"/>
-<input  type="string"    [(ngModel)]="nom"/>
-
+<form>
+    <input type="text" placeholder="Nom" /><br>
+    <input type="text" placeholder="Prénom" /><br>
+    <input type="email" placeholder="Email" /><br>
+    <input type="password" placeholder="Mot de passe" /><br>
+  </form>
+  <select>
+    <option value="" disabled selected>Choisissez un pays</option>
+    <option value="fr">France</option>
+    <option value="ca">Canada</option>
+    <option value="us">États-Unis</option>
+  </select><br>
+  <button type="submit">S'inscrire</button>  

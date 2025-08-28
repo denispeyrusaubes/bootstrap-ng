@@ -10,5 +10,6 @@ import { FormsModule } from '@angular/forms';
 export class InscriptionComponent {
 prenom = ""
 nom = ""
-  
+mail = ""
+age = ""
 }
