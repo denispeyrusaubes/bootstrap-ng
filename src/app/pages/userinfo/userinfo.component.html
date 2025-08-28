@@ -1,0 +1,12 @@
+<div *ngIf="user; else noUser">
+    <h2>Mon Profil</h2>
+    <p><strong>Nom :</strong> {{ user.nom }}</p>
+    <p><strong>Prénom :</strong> {{ user.prenom }}</p>
+    <p><strong>Email :</strong> {{ user.email }}</p>
+    <p><strong>Pays :</strong> {{ user.pays }}</p>
+  </div>
+  
+  <ng-template #noUser>
+    <p>Aucune donnée trouvée. Va sur la page d’inscription 🙂</p>
+  </ng-template>
+  

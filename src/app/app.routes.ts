@@ -4,6 +4,7 @@ import { SommaireComponent } from './pages/sommaire/sommaire.component';
 import { AproposComponent } from './pages/apropos/apropos.component'; 
 import { CalculatorComponent } from './pages/calculator/calculator.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
+import { UserinfoComponent } from './pages/userinfo/userinfo.component';
 
 export const routes: Routes = [
   { path: '', component: CalculatorComponent },
@@ -11,6 +12,7 @@ export const routes: Routes = [
   { path: 'apropos', component: AproposComponent },
   { path: 'sommaire', component: SommaireComponent },
   { path: 'calculator', component: CalculatorComponent },
-  { path: 'inscription', component: InscriptionComponent }
+  { path: 'inscription', component: InscriptionComponent },
+  { path: 'userinfo', component: UserinfoComponent }
 
 ];
