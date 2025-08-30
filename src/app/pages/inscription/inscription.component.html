@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()">
+    <input [(ngModel)]="nom" name="nom" placeholder="Nom"><br>
+    <input [(ngModel)]="prenom" name="prenom" placeholder="Prénom"><br>
+    <input [(ngModel)]="email" name="email" type="email" placeholder="Email"><br>
+    <input [(ngModel)]="motDePasse" name="motDePasse" type="password" placeholder="Mot de passe"><br>
+  
+    <select [(ngModel)]="pays" name="pays">
+      <option value="" disabled selected>Choisissez un pays</option>
+      <option value="France">France</option>
+      <option value="Canada">Canada</option>
+      <option value="États-Unis">États-Unis</option>
+    </select><br>
+  
+    <button type="submit">S'inscrire</button>
+  </form>
+  
