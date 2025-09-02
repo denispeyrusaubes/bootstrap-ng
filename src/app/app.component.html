@@ -1,14 +1,21 @@
 <button matFab extended>
     <mat-icon>home</mat-icon>
     Home
-  </button>
-  <button routerLink="/projets">Aller vers Projets</button>
-<button routerLink="/apropos">Aller vers À propos</button>
-<button routerLink="/calculator">Aller vers À calculator</button>
-<button routerLink="/inscription">formulaire inscription</button>
-<button routerLink="/userinfo">Profil</button>
 
 
-<br>
-
-<router-outlet/>
+    <mat-toolbar color="primary">
+        <button mat-icon-button routerLink="/">
+          <mat-icon>home</mat-icon>
+        </button>
+        <span>Mon Application</span>
+        <span class="spacer"></span>
+      
+        <button mat-button routerLink="/projets" routerLinkActive="active">Projets</button>
+        <button mat-button routerLink="/apropos" routerLinkActive="active">À propos</button>
+        <button mat-button routerLink="/calculator" routerLinkActive="active">Calculatrice</button>
+        <button mat-button routerLink="/inscription" routerLinkActive="active">Inscription</button>
+        <button mat-button routerLink="/userinfo" routerLinkActive="active">Profil</button>
+      </mat-toolbar>
+      
+      <router-outlet></router-outlet> 
+  

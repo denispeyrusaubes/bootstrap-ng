@@ -1,18 +1,24 @@
 import { Component } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router'; 
 
-
-
-type Section = { titre: string; description: string };
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,MatIcon],              // ngFor vient d'ici
+  imports: [
+    CommonModule,
+    RouterModule, 
+    RouterOutlet,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {            
-
-}
+export class AppComponent {}
