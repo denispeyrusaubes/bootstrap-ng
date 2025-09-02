@@ -1,23 +1,41 @@
-<form (ngSubmit)="onSubmit()">
+<div class="form-container">
+  <form (ngSubmit)="onSubmit()">
     <input [(ngModel)]="nom" name="nom" placeholder="Nom"><br>
     <input [(ngModel)]="prenom" name="prenom" placeholder="Prénom"><br>
-    <input [(ngModel)]="email" name="email" type="email" placeholder="Email"><br>
     <input [(ngModel)]="motDePasse" name="motDePasse" type="password" placeholder="Mot de passe"><br>
-  
+    <input [(ngModel)]="email"
+    name="email"
+    type="email"
+    placeholder="Email"
+    #emailCtrl="ngModel"
+    required
+    email /><br>
+
+<div *ngIf="emailCtrl.invalid && (emailCtrl.dirty || emailCtrl.touched)">
+<small *ngIf="emailCtrl.errors?.['required']" style="color:red">
+ L'email est obligatoire
+</small>
+<small *ngIf="emailCtrl.errors?.['email']" style="color:red">
+ Format d'email invalide
+</small>
+</div>
+
+
+
     <select [(ngModel)]="pays" name="pays">
       <option value="" disabled selected>Choisissez un pays</option>
       <option value="France">France</option>
       <option value="Canada">Canada</option>
       <option value="États-Unis">États-Unis</option>
     </select><br>
+
     <mat-form-field appearance="fill">
       <mat-label>Date de naissance</mat-label>
-      <input matInput [matDatepicker]="picker" placeholder="Choisissez une date">
+      <input matInput [matDatepicker]="picker" [(ngModel)]="dateNaissance" name="dateNaissance">
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  
-  
+    </mat-form-field><br>
+
     <button type="submit">S'inscrire</button>
   </form>
-  
+</div>
