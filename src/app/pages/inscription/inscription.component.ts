@@ -1,13 +1,30 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';   // ✅ import nécessaire
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+
 import { UserService } from '../userinfo/user.service';
+
+
+
 
 @Component({
   selector: 'app-inscription',
-  standalone: true,             // ✅ indique que le composant est standalone
-  imports: [FormsModule],       // ✅ FormsModule activé uniquement pour ce composant
-  templateUrl: './inscription.component.html'
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+  ],
+  templateUrl: './inscription.component.html',
 })
 export class InscriptionComponent {
   nom = '';
@@ -15,6 +32,7 @@ export class InscriptionComponent {
   email = '';
   motDePasse = '';
   pays = '';
+  dateNaissance: Date | null = null;
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -24,9 +42,11 @@ export class InscriptionComponent {
       prenom: this.prenom,
       email: this.email,
       motDePasse: this.motDePasse,
-      pays: this.pays
+      pays: this.pays,
+      dateNaissance: this.dateNaissance,
     };
     this.userService.setUser(user);
     this.router.navigate(['/userinfo']);
   }
 }
+

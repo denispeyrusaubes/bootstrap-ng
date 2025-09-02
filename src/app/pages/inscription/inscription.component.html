@@ -10,7 +10,13 @@
       <option value="Canada">Canada</option>
       <option value="États-Unis">États-Unis</option>
     </select><br>
-
+    <mat-form-field appearance="fill">
+      <mat-label>Date de naissance</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="Choisissez une date">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
   
     <button type="submit">S'inscrire</button>
   </form>
