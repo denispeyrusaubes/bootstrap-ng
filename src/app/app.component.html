@@ -1,19 +1,13 @@
-<button matFab extended>
-    <mat-icon>home</mat-icon>
-    Home
-
-
-    <mat-toolbar color="primary">
-        <button mat-icon-button routerLink="/">
-          <mat-icon>home</mat-icon>
-        </button>
-      
-        <button mat-button routerLink="/projets" routerLinkActive="active">Projets</button>
-        <button mat-button routerLink="/apropos" routerLinkActive="active">À propos</button>
-        <button mat-button routerLink="/calculator" routerLinkActive="active">Calculatrice</button>
-        <button mat-button routerLink="/inscription" routerLinkActive="active">Inscription</button>
-        <button mat-button routerLink="/userinfo" routerLinkActive="active">Profil</button>
-      </mat-toolbar>
-      
-      <router-outlet></router-outlet> 
+<nav>
+    <a routerLink="/inscription" routerLinkActive="active">Inscription</a>
+    <a routerLink="/projets" routerLinkActive="active">Projets</a>
+    <a routerLink="/apropos" routerLinkActive="active">À propos</a>
+    <a routerLink="/calculator" routerLinkActive="active">Calculatrice</a>
+    <a routerLink="/userinfo" routerLinkActive="active">Profil</a>
+  </nav>
+  
+  <hr>
+  
+  <!-- C’est ici que s’affichent les pages -->
+  <router-outlet></router-outlet>
   

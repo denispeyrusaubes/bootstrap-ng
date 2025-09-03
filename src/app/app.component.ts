@@ -1,24 +1,28 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; 
-
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterModule, 
     RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
     MatToolbarModule,
-    MatButtonModule,
-    MatIconModule
+    MatButtonModule
   ],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <mat-toolbar color="primary">
+      <button mat-button routerLink="/inscription" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inscription</button>
+      <button mat-button routerLink="/projets"      routerLinkActive="active">Projets</button>
+      <button mat-button routerLink="/apropos"      routerLinkActive="active">À propos</button>
+      <button mat-button routerLink="/calculator"   routerLinkActive="active">Calculatrice</button>
+      <button mat-button routerLink="/userinfo"     routerLinkActive="active">Profil</button>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  `
 })
 export class AppComponent {}

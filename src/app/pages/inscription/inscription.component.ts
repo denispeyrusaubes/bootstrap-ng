@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,7 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 
-import { UserService } from '../userinfo/user.service';
+import { UserService } from '../userinfo/user.service';   
+import { PaysService } from '../pays/pays.service'; 
 
 @Component({
   selector: 'app-inscription',
@@ -23,7 +24,8 @@ import { UserService } from '../userinfo/user.service';
   ],
   templateUrl: './inscription.component.html',
 })
-export class InscriptionComponent {
+export class InscriptionComponent implements OnInit {
+  // Champs du formulaire
   nom = '';
   prenom = '';
   email = '';
@@ -32,12 +34,42 @@ export class InscriptionComponent {
   pays = '';
   dateNaissance: Date | null = null;
 
-  showAlert = false; // ✅ pour afficher un message d’erreur global
+  // UI
+  showAlert = false;
 
-  constructor(private userService: UserService, private router: Router) {}
+  // ✅ NEW: gestion des pays
+  paysList: any[] = [];
+  isLoadingPays = false;
+  loadError: string | null = null;
 
-  onSubmit() {
-    // Vérifie si un champ est vide
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private paysService: PaysService // ✅ on injecte le service
+  ) {}
+
+  // ✅ NEW: on charge les pays au démarrage du composant
+  ngOnInit(): void {
+    this.isLoadingPays = true;
+    this.paysService.getPays().subscribe({
+      next: (data) => {
+        // Tri alphabétique
+        this.paysList = (data ?? []).sort((a: any, b: any) =>
+          (a?.name?.common ?? '').localeCompare(b?.name?.common ?? '')
+        );
+        this.isLoadingPays = false;
+        // console.log('Pays chargés:', this.paysList.length, this.paysList[0]);
+      },
+      error: (err) => {
+        console.error('Erreur chargement pays', err);
+        this.loadError = "Impossible de charger la liste des pays.";
+        this.isLoadingPays = false;
+      },
+    });
+  }
+
+  onSubmit(): void {
+    // Vérifs basiques
     if (
       !this.nom ||
       !this.prenom ||
@@ -50,14 +82,12 @@ export class InscriptionComponent {
       this.showAlert = true;
       return;
     }
-
-    // Vérifie que les mots de passe correspondent
     if (this.motDePasse !== this.confirmMotDePasse) {
       this.showAlert = true;
       return;
     }
 
-    this.showAlert = false; // ✅ tout est bon → on enlève l’alerte
+    this.showAlert = false;
 
     const user = {
       nom: this.nom,

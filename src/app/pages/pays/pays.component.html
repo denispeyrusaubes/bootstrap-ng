@@ -1,6 +1,4 @@
-
-<h2>Inscription</h2> <!-- 👀 DOIT S'AFFICHER -->
-<!-- le reste de ton formulaire ici -->
+<h2>Inscription</h2> <!-- 👀 si tu ne vois pas ça, c'est que ce template n'est pas utilisé -->
 
 <form (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
 
@@ -19,27 +17,28 @@
     Les mots de passe ne correspondent pas
   </div>
 
+  <label for="pays">Pays</label>
   <select [(ngModel)]="pays" name="pays" required>
-    <option [ngValue]="null" disabled>Choisissez un pays</option>
-    <option *ngFor="let p of paysList" [ngValue]="p.name">
+    <option value="" disabled selected>Choisissez un pays</option>
+    <option *ngFor="let p of paysList" [value]="p.name">
       {{ p.name }}
     </option>
   </select>
-    
-  
+  <div *ngIf="isLoadingPays">Chargement des pays…</div>
+  <div *ngIf="loadError" class="field-error">{{ loadError }}</div>
+  <div *ngIf="f.submitted && !pays" class="field-error">Le pays est obligatoire</div>
+
   <mat-form-field appearance="fill">
     <mat-label>Date de naissance</mat-label>
     <input matInput [matDatepicker]="picker" [(ngModel)]="dateNaissance" name="dateNaissance" required>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field><br>
+  </mat-form-field>
   <div *ngIf="f.submitted && !dateNaissance" class="field-error">La date de naissance est obligatoire</div>
 
   <button type="submit">S'inscrire</button>
 
-
   <div *ngIf="showAlert" class="alert">
     ⚠️ Merci de remplir tous les champs correctement et de vérifier que les mots de passe correspondent.
   </div>
-  
 </form>
