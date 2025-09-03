@@ -23,6 +23,7 @@ import { PaysService } from '../pays/pays.service';
     MatNativeDateModule,
   ],
   templateUrl: './inscription.component.html',
+  styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent implements OnInit {
   // Champs du formulaire

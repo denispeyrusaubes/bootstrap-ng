@@ -1,13 +1,12 @@
-<nav>
-    <a routerLink="/inscription" routerLinkActive="active">Inscription</a>
-    <a routerLink="/projets" routerLinkActive="active">Projets</a>
-    <a routerLink="/apropos" routerLinkActive="active">À propos</a>
-    <a routerLink="/calculator" routerLinkActive="active">Calculatrice</a>
-    <a routerLink="/userinfo" routerLinkActive="active">Profil</a>
+<nav class="navbar">
+    <ul>
+      <li><a routerLink="/inscription">Inscription</a></li>
+      <li><a routerLink="/projets">Projets</a></li>
+      <li><a routerLink="/apropos">À propos</a></li>
+      <li><a routerLink="/calculator">Calculatrice</a></li>
+      <li><a routerLink="/userinfo">Profil</a></li>
+    </ul>
   </nav>
   
-  <hr>
-  
-  <!-- C’est ici que s’affichent les pages -->
   <router-outlet></router-outlet>
   

@@ -1,45 +1,22 @@
+<div class="page-center">
+  <div class="form-card">
+    <h2>Inscription</h2>
 
-<h2>Inscription</h2> <!-- 👀 DOIT S'AFFICHER -->
-<!-- le reste de ton formulaire ici -->
+    <form (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+      <input [(ngModel)]="nom" name="nom" placeholder="Nom" required />
+      <input [(ngModel)]="prenom" name="prenom" placeholder="Prénom" required />
+      <input [(ngModel)]="email" name="email" type="email" placeholder="Email" required />
+      <input [(ngModel)]="motDePasse" name="motDePasse" type="password" placeholder="Mot de passe" required />
+      <input [(ngModel)]="confirmMotDePasse" name="confirmMotDePasse" type="password" placeholder="Confirmer le mot de passe" required />
 
-<form (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+      <select [(ngModel)]="pays" name="pays" required>
+        <option [ngValue]="null" disabled>Choisissez un pays</option>
+        <option *ngFor="let p of paysList" [value]="p.name">{{ p.name }}</option>
+      </select>
 
-  <input [(ngModel)]="nom" name="nom" placeholder="Nom" required /><br>
-  <div *ngIf="f.submitted && !nom" class="field-error">Le nom est obligatoire</div>
+      <input [(ngModel)]="dateNaissance" name="dateNaissance" type="date" required />
 
-  <input [(ngModel)]="prenom" name="prenom" placeholder="Prénom" required /><br>
-  <div *ngIf="f.submitted && !prenom" class="field-error">Le prénom est obligatoire</div>
-
-  <input [(ngModel)]="email" name="email" type="email" placeholder="Email" required email /><br>
-  <div *ngIf="f.submitted && !email" class="field-error">L'email est obligatoire</div>
-
-  <input [(ngModel)]="motDePasse" name="motDePasse" type="password" placeholder="Mot de passe" required /><br>
-  <input [(ngModel)]="confirmMotDePasse" name="confirmMotDePasse" type="password" placeholder="Confirmer le mot de passe" required /><br>
-  <div *ngIf="f.submitted && (motDePasse !== confirmMotDePasse)" class="field-error">
-    Les mots de passe ne correspondent pas
+      <button type="submit">S'inscrire</button>
+    </form>
   </div>
-
-  <select [(ngModel)]="pays" name="pays" required>
-    <option [ngValue]="null" disabled>Choisissez un pays</option>
-    <option *ngFor="let p of paysList" [ngValue]="p.name">
-      {{ p.name }}
-    </option>
-  </select>
-    
-  
-  <mat-form-field appearance="fill">
-    <mat-label>Date de naissance</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="dateNaissance" name="dateNaissance" required>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field><br>
-  <div *ngIf="f.submitted && !dateNaissance" class="field-error">La date de naissance est obligatoire</div>
-
-  <button type="submit">S'inscrire</button>
-
-
-  <div *ngIf="showAlert" class="alert">
-    ⚠️ Merci de remplir tous les champs correctement et de vérifier que les mots de passe correspondent.
-  </div>
-  
-</form>
+</div>

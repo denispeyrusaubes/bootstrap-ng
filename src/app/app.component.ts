@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-root',
   standalone: true,
+  styleUrls: ['./app.component.css'],   // ✅ tableau + VIRGULE à la fin
   imports: [
     RouterOutlet,
     RouterLink,
@@ -15,11 +16,15 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   template: `
     <mat-toolbar color="primary">
-      <button mat-button routerLink="/inscription" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inscription</button>
-      <button mat-button routerLink="/projets"      routerLinkActive="active">Projets</button>
-      <button mat-button routerLink="/apropos"      routerLinkActive="active">À propos</button>
-      <button mat-button routerLink="/calculator"   routerLinkActive="active">Calculatrice</button>
-      <button mat-button routerLink="/userinfo"     routerLinkActive="active">Profil</button>
+      <div class="nav"> 
+        <button mat-button routerLink="/inscription"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Inscription</button>
+        <button mat-button routerLink="/projets"      routerLinkActive="active">Projets</button>
+        <button mat-button routerLink="/apropos"      routerLinkActive="active">À propos</button>
+        <button mat-button routerLink="/calculator"   routerLinkActive="active">Calculatrice</button>
+        <button mat-button routerLink="/userinfo"     routerLinkActive="active">Profil</button>
+      </div>
     </mat-toolbar>
 
     <router-outlet></router-outlet>
