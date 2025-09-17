@@ -1,0 +1,29 @@
+<div class="container">
+
+  <h2>Recherche d'entreprise par domaine</h2>
+
+  <!-- Formulaire de recherche -->
+  <div class="search-box">
+    <input [(ngModel)]="domainInput" placeholder="Ex: apple.com" />
+    <button (click)="searchCompany(domainInput)">Rechercher</button>
+  </div>
+
+  <!-- Chargement -->
+  <div *ngIf="isLoading" class="loading">
+    ⏳ Chargement en cours...
+  </div>
+
+  <div *ngIf="companyData && !errorMessage">
+  <h3>Résultat</h3>
+  <p><strong>Nom :</strong> {{ companyData?.name }}</p>
+  <p><strong>Domaine :</strong> {{ companyData?.domain }}</p>
+  <p><strong>Industrie :</strong> {{ companyData?.industry }}</p>
+  <p><strong>Taille :</strong> {{ companyData?.size }}</p>
+  <p><strong>Description :</strong> {{ companyData?.description }}</p>
+  <p>
+    <strong>Site web :</strong>
+    <a [href]="'https://' + (companyData?.domain || companyData?.website)" target="_blank">
+      {{ companyData?.domain || companyData?.website }}
+    </a>
+  </p>
+</div>
